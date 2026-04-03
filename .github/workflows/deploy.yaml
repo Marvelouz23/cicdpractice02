@@ -9,6 +9,20 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Testing
+      - name: Clone Codebase
+        uses: actions/checkout@v6
+      
+      - name: Check If File Exist
         run: |
-          echo "Testing for Captain's Log"
+          ls -la         
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+      
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
